@@ -110,3 +110,8 @@ VALUES
 ('12-5776-4', (SELECT VorlesungID FROM Vorlesungen WHERE Titel = 'Elektrotechnik'), (SELECT ProfessorID FROM Professor WHERE Vorname = 'Nikola' AND Nachname = 'Tesla'), '2021-05-26 10:00', 5.5),
 ('14-0556-8', (SELECT VorlesungID FROM Vorlesungen WHERE Titel = 'Allgemeine Relativitätstheorie'), (SELECT ProfessorID FROM Professor WHERE Vorname = 'Albert' AND Nachname = 'Einstein'), NULL, NULL),
 ('09-7270-8', (SELECT VorlesungID FROM Vorlesungen WHERE Titel = 'Biochemie'), (SELECT ProfessorID FROM Professor WHERE Vorname = 'Wilhelm Conrad' AND Nachname = 'Röntgen'), '2020-05-25 08:30', 4.5);
+
+INSERT INTO [dbo].[Voraussetzungen] ([VorlesungID], [VoraussetzungID])
+VALUES 
+((SELECT VorlesungID FROM Vorlesungen WHERE Titel = 'Radiologie'), (SELECT VorlesungID FROM Vorlesungen WHERE Titel = 'Elektrotechnik')),
+((SELECT VorlesungID FROM Vorlesungen WHERE Titel = 'Quantenphysik'), (SELECT VorlesungID FROM Vorlesungen WHERE Titel = 'Radiologie'));
