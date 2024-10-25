@@ -53,12 +53,13 @@ SELECT AVG(Note) AS Durchschnittsnote FROM Prüfungen WHERE Matrikelnummer = '13
 --Bonus Auswertungen
 
 --Bonus1
-SELECT v1.Vorlesung AS Vorgänger, v2.Vorlesung AS Nachfolger
+SELECT v1.Titel AS Vorgänger, v2.Titel AS Nachfolger
 FROM Voraussetzungen vor
 INNER JOIN Vorlesungen v1 ON vor.VoraussetzungID = v1.VorlesungID
 INNER JOIN Vorlesungen v2 ON vor.VorlesungID = v2.VorlesungID
-WHERE (v2.Vorlesung = 'Radiologie' AND v1.Vorlesung = 'Elektrotechnik')
-   OR (v2.Vorlesung = 'Quantenphysik' AND v1.Vorlesung = 'Radiologie');
+WHERE (v2.Titel = 'Radiologie' AND v1.Titel = 'Elektrotechnik')
+   OR (v2.Titel = 'Quantenphysik' AND v1.Titel = 'Radiologie');
+
 
 --Bonus2
 SELECT Vorname, Nachname, Geburtsdatum,
@@ -68,3 +69,4 @@ SELECT Vorname, Nachname, Geburtsdatum,
        END AS Chef_Status
 FROM Assistenten
 WHERE Geburtsdatum = (SELECT MIN(Geburtsdatum) FROM Assistenten);
+
